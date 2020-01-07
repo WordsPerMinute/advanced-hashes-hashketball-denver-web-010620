@@ -1,4 +1,5 @@
 require 'pry'
+#<<<<<<< HEAD
 
 def game_hash
   {
@@ -174,20 +175,6 @@ def player_numbers(team_name)
   nums
 end
 
-# def player_numbers(team_name)
-#   game_hash.map do |place, team|
-#     if team[:team_name] == team_name
-#       team.each do |attributes, data|
-#         if attributes == :players
-#           data.each do |player|
-#             return player[:number]
-#           end
-#         end
-#       end
-#     end
-#   end
-# end
-
 def player_stats(players_name)
   new_hash = {}
   game_hash.each do |place, team|
@@ -205,7 +192,7 @@ def player_stats(players_name)
   end
   new_hash
 end
-[]]
+
 # def big_shoe_rebounds(players_name)
 #   game_hash.each do |place, team|
 #     team.each do |attribute, data|
@@ -219,3 +206,31 @@ end
 #     end
 #   end
 # end
+
+def big_shoe_rebounds
+  largestShoe = 0
+  rebounds = 0
+  game_hash.each do |team, team_info|
+    team_info[:players].each do |player|
+      if player[:shoe] > largestShoe
+        largestShoe = player[:shoe]
+        rebounds = player[:rebounds]
+      end
+    end
+  end
+  return rebounds
+end
+
+def most_points_scored
+  playerName = ""
+  mostPoints = 0
+  game_hash.each do |team, team_info|
+    team_info[:players].each do |player|
+      if player[:points] > mostPoints
+        playerName = player[:player_name]
+        mostPoints = player[:points]
+      end
+    end
+  end
+  return playerName
+end
