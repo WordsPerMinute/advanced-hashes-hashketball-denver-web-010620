@@ -133,14 +133,14 @@ end
 
 def shoe_size(players_name)
   game_hash.each do |place, team|
-    team.each do |attribute, data|
-      if attribute == :players
-        data.each do |player|
-          if player[:player_name] == players_name
-            return player[:shoe]
+      team.each do |attribute, data|
+        if attribute == :players
+          data.each do |player|
+            if player[:player_name] == players_name
+              return player[:shoe]
+            end
           end
         end
-      end
     end
   end
 end
@@ -234,3 +234,36 @@ def most_points_scored
   end
   return playerName
 end
+
+# def winning_team
+#   winningTeamName = ""
+#   awayPointsTotal = 0
+#   homePointsTotal = 0
+#   game_hash.each do |team, team_info|
+#     team_info[:players].each do [player]
+#       if team_info[:team_name] == "Charlotte Hornets"
+#         awayPointsTotal += player[:points]
+#       elsif team_info[:team_name] == "Brooklyn Nets"
+#         homePointsTotal += player[:points]
+#       else
+#         puts "TRY AGAIN, didn't get we what we wanted =)"
+#       end
+#   end
+#   if awayPointsTotal > homePointsTotal
+#     return "Charlotte Hornets"
+#   elsif homePointsTotal > awayPointsTotal
+#     return "Brooklyn Nets"
+#   else
+#     return "TRY AGAIN, didn't get we what we wanted =)"
+#   end
+# end
+
+# def player_with_longest_name
+
+# end
+
+# def long_name_steals_a_ton?
+
+# end
+
+
