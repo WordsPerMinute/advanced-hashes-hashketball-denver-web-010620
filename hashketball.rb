@@ -235,35 +235,58 @@ def most_points_scored
   return playerName
 end
 
-# def winning_team
-#   winningTeamName = ""
-#   awayPointsTotal = 0
-#   homePointsTotal = 0
-#   game_hash.each do |team, team_info|
-#     team_info[:players].each do [player]
-#       if team_info[:team_name] == "Charlotte Hornets"
-#         awayPointsTotal += player[:points]
-#       elsif team_info[:team_name] == "Brooklyn Nets"
-#         homePointsTotal += player[:points]
-#       else
-#         puts "TRY AGAIN, didn't get we what we wanted =)"
-#       end
-#   end
-#   if awayPointsTotal > homePointsTotal
-#     return "Charlotte Hornets"
-#   elsif homePointsTotal > awayPointsTotal
-#     return "Brooklyn Nets"
-#   else
-#     return "TRY AGAIN, didn't get we what we wanted =)"
-#   end
-# end
+def winning_team
+  winningTeamName = ""
+  awayPointsTotal = 0
+  homePointsTotal = 0
+  game_hash.each do |team, team_info|
+    team_info[:players].each do |player|
+      if team_info[:team_name] == "Charlotte Hornets"
+        awayPointsTotal += player[:points]
+      elsif team_info[:team_name] == "Brooklyn Nets"
+        homePointsTotal += player[:points]
+      else
+        puts "TRY AGAIN, didn't get we what we wanted =)"
+      end
+    end
+  end
+  if awayPointsTotal > homePointsTotal
+    return "Charlotte Hornets"
+  elsif homePointsTotal > awayPointsTotal
+    return "Brooklyn Nets"
+  else
+    return "TRY AGAIN, didn't get we what we wanted =)"
+  end
+end
 
-# def player_with_longest_name
+def player_with_longest_name
+  playerLongestName = ""
+  game_hash.each do |team, team_info|
+    team_info[:players].each do |player|
+      if player[:player_name].length > playerLongestName.length
+        playerLongestName = player[:player_name]
+      end
+    end
+  end
+  return playerLongestName
+end
 
-# end
-
-# def long_name_steals_a_ton?
-
-# end
-
+def long_name_steals_a_ton?
+  mostStealPlayer = ""
+  mostSteals = 0
+  game_hash.each do |team, team_info|
+    team_info[:players].each do |player|
+      if player[:steals] > mostSteals
+        mostStealPlayer = player[:player_name]
+        mostSteals = player[:steals]
+      end
+    end
+  end
+  
+  if player_with_longest_name == mostStealPlayer
+    return true 
+  else
+    return false
+  end
+end
 
